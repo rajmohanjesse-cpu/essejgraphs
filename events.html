@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EsseJGraphs | Events</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">EsseJGraphs</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Event Photography</h1>
+      <p>Capturing authentic expressions and timeless character.</p>
+      <button onclick="scrollToGallery()">View Gallery</button>
+    </div>
+  </section>
+
+  <!-- Masonry Gallery Section -->
+  <section id="gallery" class="masonry-gallery">
+    <div class="masonry-item"><img src="images/portrait1.jpg" alt="Portrait 1"></div>
+    <div class="masonry-item"><img src="images/portrait2.jpg" alt="Portrait 2"></div>
+    <div class="masonry-item"><img src="images/portrait3.jpg" alt="Portrait 3"></div>
+    <div class="masonry-item"><img src="images/portrait4.jpg" alt="Portrait 4"></div>
+    <div class="masonry-item"><img src="images/portrait5.jpg" alt="Portrait 5"></div>
+    <div class="masonry-item"><img src="images/portrait6.jpg" alt="Portrait 6"></div>
+    <div class="masonry-item"><img src="images/portrait7.jpg" alt="Portrait 7"></div>
+    <div class="masonry-item"><img src="images/portrait8.jpg" alt="Portrait 8"></div>
+    <div class="masonry-item"><img src="images/portrait9.jpg" alt="Portrait 9"></div>
+  </section>
+
+  <!-- Load More Button -->
+  <button id="loadMore">Load More</button>
+
+  <!-- Call-to-Action Section -->
+  <section class="cta">
+    <h2>Love what you see?</h2>
+    <p>Book a portrait session and let’s capture your authentic moments.</p>
+    <a href="contact.html">Book Now</a>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Back to Top">↑</button>
+
+  <!-- Footer -->
+  <footer>
+    <p>EssejGraphs 2025</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a> |
+      <a href="portfolio.html">Portfolio</a> |
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Scroll to gallery
+    function scrollToGallery() {
+      document.getElementById("gallery").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Back-to-top button
+    const backToTopBtn = document.getElementById("backToTop");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    };
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // ==============================
+    // Lightbox functionality
+    // ==============================
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const captionText = document.getElementById("lightbox-caption");
+    const closeBtn = document.querySelector(".lightbox .close");
+    const nextBtn = document.querySelector(".lightbox .next");
+    const prevBtn = document.querySelector(".lightbox .prev");
+
+    const galleryImages = document.querySelectorAll(".masonry-item img");
+    let currentIndex = 0;
+
+    function showImage(index) {
+      lightboxImg.src = galleryImages[index].src;
+      captionText.innerHTML = galleryImages[index].alt;
+      currentIndex = index;
+    }
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        showImage(index);
+      });
+    });
+
+    // Close lightbox
+    closeBtn.onclick = () => { lightbox.style.display = "none"; };
+
+    // Next/Prev controls
+    nextBtn.onclick = () => showImage((currentIndex + 1) % galleryImages.length);
+    prevBtn.onclick = () => showImage((currentIndex - 1 + galleryImages.length) % galleryImages.length);
+
+    // Close when clicking outside image
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) lightbox.style.display = "none";
+    });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (lightbox.style.display === "flex") {
+        if (e.key === "ArrowRight") showImage((currentIndex + 1) % galleryImages.length);
+        else if (e.key === "ArrowLeft") showImage((currentIndex - 1 + galleryImages.length) % galleryImages.length);
+        else if (e.key === "Escape") lightbox.style.display = "none";
+      }
+    });
+
+    // ==============================
+    // Load More functionality
+    // ==============================
+    const loadMoreBtn = document.getElementById("loadMore");
+    let itemsToShow = 9; // initially show 9
+    const totalItems = galleryImages.length;
+
+    function updateGalleryVisibility() {
+      galleryImages.forEach((img, index) => {
+        img.parentElement.style.display = index < itemsToShow ? "block" : "none";
+      });
+      if (itemsToShow >= totalItems) loadMoreBtn.style.display = "none";
+    }
+
+    loadMoreBtn.addEventListener("click", () => {
+      itemsToShow += 6; // show 6 more items
+      updateGalleryVisibility();
+    });
+
+    updateGalleryVisibility(); // initial call
+  </script>
+</body>
+</html>

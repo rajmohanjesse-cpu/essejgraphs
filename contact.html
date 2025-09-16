@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EsseJGraphs | Contact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+        <a href="index.html">EsseJGraphs</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contact Page Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Contact Me</h1>
+      <p>I'd love to hear from you! Reach out via the form below or on Instagram.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact-form" style="padding: 50px 20px; background: var(--bg-secondary); text-align: center;">
+    <h2 style="color: var(--accent-cool); margin-bottom: 20px;">Send a Message</h2>
+    
+    <!-- Google Form placeholder -->
+    <div style="width: 100%; max-width: 700px; margin: 0 auto;">
+      <iframe 
+       src="https://docs.google.com/forms/d/e/1FAIpQLScQBQbMYlCsvFu903_5JefVU_w47pxi9H_pFWx39NfFZ1kjSQ/viewform?embedded=true" 
+       width="100%" 
+       height="600" 
+       frameborder="0" 
+       marginheight="0" 
+       marginwidth="0">
+         Loading…
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Instagram Contact Section -->
+  <section class="contact-instagram" style="padding: 40px 20px; text-align: center; background: var(--bg-primary);">
+    <h3 style="color: var(--accent-cool); margin-bottom: 20px;">Or reach me on Instagram</h3>
+    
+    <div style="display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;">
+      <!-- Instagram 1 -->
+      <a href="https://www.instagram.com/dumpbyjesse?utm_source=ig_web_button_share_sheet&igsh=ZWVqNjBnYmwweWZy" target="_blank" style="text-decoration: none; color: var(--text-primary);">
+        <img src="images/ig icon.jpeg" alt="Instagram 1" style="width: 60px; height: 60px; display: block; margin: 0 auto 10px auto;">
+        <span>@Dumpbyjesse</span>
+      </a>
+
+      <!-- Instagram 2 -->
+      <a href="https://www.instagram.com/jesssserajmohan/" target="_blank" style="text-decoration: none; color: var(--text-primary);">
+        <img src="images/ig icon.jpeg" alt="Instagram 2" style="width: 60px; height: 60px; display: block; margin: 0 auto 10px auto;">
+        <span>@Jesssserajmohan</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Back to Top">↑</button>
+
+  <!-- Footer -->
+  <footer>
+    <p>EssejGraphs 2025</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a> |
+      <a href="portfolio.html">Portfolio</a> |
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Back-to-top button
+    const backToTopBtn = document.getElementById("backToTop");
+
+    window.onscroll = function() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    };
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>
