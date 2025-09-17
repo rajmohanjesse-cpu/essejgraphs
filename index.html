@@ -3,119 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EsseJGraphs | Home</title>
+  <title>EsseJGraphs | Welcome</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">EsseJGraphs</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+<body class="welcome-page">
+  <div class="welcome-container">
+    <h1 id="welcome-text">EsseJGraphs</h1>
+  </div>
 
-  <!-- Carousel -->
-  <section class="carousel">
-    <div class="slides">
-      <img src="images/photo1.png" alt="Sample 1">
-      <img src="images/photo2.png" alt="Sample 2">
-      <img src="images/photo3.png" alt="Sample 3">
-    </div>
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
-  </section>
-
-  <!-- About Section -->
-  <section class="about">
-    <div class="about-text">
-      <h2>About Me</h2>
-      <p>
-        I’m Jesse, the eye behind <strong>EssejGraphs</strong>.  
-        My passion is capturing real emotions and stories through portraits, events, and travel photography.  
-        I focus on creating timeless images that highlight both the beauty of people and the world around us.
-      </p>
-    </div>
-    <div class="about-img">
-      <img src="images/photo1.png" alt="Your photo">
-    </div>
-  </section>
-
-  <!-- Stats / Counters Section -->
-  <section class="stats">
-    <div class="stats-container">
-      <div class="stat">
-        <h3 class="counter" data-target="150">0</h3>
-        <p>Projects</p>
-      </div>
-      <div class="stat">
-        <h3 class="counter" data-target="300">0</h3>
-        <p>Clients</p>
-      </div>
-      <div class="stat">
-        <h3 class="counter" data-target="5">0</h3>
-        <p>Years Experience</p>
-      </div>
-      <div class="stat">
-        <h3 class="counter" data-target="20">0</h3>
-        <p>Awards</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio Teaser -->
-  <section class="portfolio-teaser">
-    <a href="portfolio.html">
-      <div class="teaser-overlay">
-        <h2>Portfolio</h2>
-      </div>
-    </a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>EssejGraphs 2025</p>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </footer>
-
-  <script src="script.js"></script>
   <script>
-    // Animated Counters
-    const counters = document.querySelectorAll('.counter');
-    const speed = 200; // lower = faster
-
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-
-        const increment = target / speed;
-
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(updateCount, 20);
-        } else {
-          counter.innerText = target;
-        }
-      };
-
-      // Trigger animation when the counter is visible
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting) {
-            updateCount();
-            observer.unobserve(counter);
-          }
-        });
-      }, { threshold: 0.6 });
-
-      observer.observe(counter);
+    // Redirect to homepage when clicked
+    document.getElementById('welcome-text').addEventListener('click', () => {
+      window.location.href = "index.html";
     });
   </script>
 </body>
