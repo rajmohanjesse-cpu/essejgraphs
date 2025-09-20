@@ -22,3 +22,4 @@ nextBtn.addEventListener('click', () => showSlide(slideIndex + 1));
 setInterval(() => {
   showSlide(slideIndex + 1);
 }, 5000);
+
